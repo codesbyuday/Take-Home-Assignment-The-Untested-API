@@ -33,6 +33,8 @@ const validateUpdateTask = (body) => {
   return null;
 };
 
+// Validates the payload for assigning a task
+// Requires 'assignee' to be a valid, non-empty string
 const validateAssignTask = (body) => {
   if (!body.assignee || typeof body.assignee !== 'string' || body.assignee.trim() === '') {
     return 'assignee is required and must be a non-empty string';

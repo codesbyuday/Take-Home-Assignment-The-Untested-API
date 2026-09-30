@@ -164,3 +164,31 @@ Added exhaustive unit and integration tests:
 - **`validators.test.js`**: Unit tests validating missing, empty, and invalid `assignee` inputs.
 - **`taskService.test.js`**: Unit tests verifying `assignTask` correctly applies the assignee and allows subsequent reassignments, returning `null` for missing tasks.
 - **`tasks.routes.test.js`**: Integration tests verifying successful assignments, 404 behavior, and 400 behavior when missing/invalid bodies are submitted. All edge cases verified against HTTP contract.
+
+
+## 3. Submission Notes
+
+### What I'd Test Next
+
+If I had more time, I would add more edge-case and integration tests, including
+concurrent task updates, unusual input values, and additional combinations of
+filtering and pagination. I would also test the API under higher request
+volumes to identify any performance or reliability issues.
+
+### What Surprised Me
+
+One thing that surprised me was that several existing behaviors had subtle
+issues that were not immediately obvious from the API surface, particularly
+the interaction between status filtering and pagination. The API also had
+validation and update behaviors that could lead to unexpected task data
+changes.
+
+### Questions Before Shipping to Production
+
+Before shipping this API to production, I would clarify:
+- What authentication and authorization requirements are expected?
+- Should the in-memory task store be replaced with a persistent database?
+- What are the expected API response and error formats?
+- What are the requirements for logging, monitoring, and rate limiting?
+- What should be the expected behavior when multiple users update the same task
+  concurrently?

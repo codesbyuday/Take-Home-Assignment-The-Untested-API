@@ -26,7 +26,7 @@ Change the filter to use strict equality:
 const getByStatus = (status) => tasks.filter((t) => t.status === status);
 ```
 ### Status
-Not fixed yet
+Fixed
 
 ---
 
@@ -59,7 +59,7 @@ Adjust the calculation to treat page 1 as the first page:
 const offset = (page > 0 ? page - 1 : 0) * limit;
 ```
 ### Status
-Not fixed yet
+Fixed
 
 ---
 
@@ -88,7 +88,7 @@ An integration test requested `?status=todo&page=1&limit=1` expecting 1 item bac
 ### What a Fix Would Look Like
 Modify the logic (or the service method) to apply the status filter first, and then paginate the filtered result, returning the combined array.
 ### Status
-Not fixed yet
+Fixed
 
 ---
 
@@ -120,7 +120,7 @@ A test created a task with a `high` priority and then called `completeTask`. Aft
 ### What a Fix Would Look Like
 Remove the `priority: 'medium'` line from the `updated` object in `completeTask`.
 ### Status
-Not fixed yet
+Fixed
 
 ---
 
@@ -151,7 +151,7 @@ const { id: _, createdAt: __, ...safeFields } = fields;
 const updated = { ...tasks[index], ...safeFields };
 ```
 ### Status
-Not fixed yet
+Fixed
 
 ---
 
@@ -185,7 +185,7 @@ Explicitly ensure the value is defined and not null before parsing:
   }
 ```
 ### Status
-Not fixed yet
+Fixed
 
 ---
 

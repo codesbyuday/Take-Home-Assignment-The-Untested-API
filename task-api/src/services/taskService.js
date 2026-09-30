@@ -77,10 +77,12 @@ const completeTask = (id) => {
   return updated;
 };
 
+// Assigns a task to a specified user by updating the 'assignee' property
 const assignTask = (id, assignee) => {
   const task = findById(id);
-  if (!task) return null;
+  if (!task) return null; // Return null if the task doesn't exist to trigger a 404
 
+  // Clone the task and add/update the assignee
   const updated = { ...task, assignee };
   const index = tasks.findIndex((t) => t.id === id);
   tasks[index] = updated;

@@ -69,17 +69,21 @@ router.patch('/:id/complete', (req, res) => {
   res.json(task);
 });
 
+// New Feature: Assign a task to a user
 router.patch('/:id/assign', (req, res) => {
+  // 1. Validate the incoming request body
   const error = validateAssignTask(req.body);
   if (error) {
     return res.status(400).json({ error });
   }
 
+  // 2. Delegate to the service layer to perform the assignment
   const task = taskService.assignTask(req.params.id, req.body.assignee);
   if (!task) {
     return res.status(404).json({ error: 'Task not found' });
   }
 
+  // 3. Return the successfully updated task
   res.json(task);
 });
 
